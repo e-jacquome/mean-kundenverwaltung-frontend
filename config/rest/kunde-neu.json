@@ -1,0 +1,19 @@
+{
+    "nachname": "Test",
+    "rating": 1,
+    "geschlecht": "W",
+    "familienstand": "IWI_FAMILIENSTAND",
+    "umsatz": 99.9,
+    "rabatt": 1,
+    "newsletter": true,
+    "geburtsdatum": "2017-02-01T00:00:00.000Z",
+    "isbn": "0-0070-0644-6",
+    "homepage": "https://test.de/",
+    "interessen": ["SPORT", "LESEN"],
+    "autoren": [
+        {
+            "vorname": "Theo",
+            "nachname": "Test"
+        }
+    ]
+}

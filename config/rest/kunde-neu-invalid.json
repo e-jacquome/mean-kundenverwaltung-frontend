@@ -1,0 +1,12 @@
+{
+    "nachname": "?!",
+    "rating": 2,
+    "geschlecht": "UNSICHTBAR",
+    "familienstand": "NO_FAMILIENSTAND",
+    "umsatz": 0,
+    "rabatt": 0,
+    "newsletter": true,
+    "geburtsdatum": "2017-02-01T00:00:00.000Z",
+    "isbn": "isbn-falsch",
+    "homepage": "anyHomepage"
+}

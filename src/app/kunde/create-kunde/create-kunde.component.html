@@ -1,0 +1,74 @@
+<div class="card">
+    <div class="card-header">
+        <span class="ml-1 font-weight-bold">Neuer Kunde</span>
+    </div>
+
+    <div class="card-body">
+        <!--
+            Template-Syntax:
+               [formGroup]="form"  fuer Input = Property Binding
+                                   d.h. formGroup fuer Attr. form
+               (submit)="save()"  fuer Output = Event Binding
+                                  d.h. Ereignis submit an save() anbinden
+                                  oder on-submit="save"
+               Definition von Attributnamen gemaess HTML: Attribute names
+               must consist of one or more characters other than the
+               space characters, U+0000 NULL, """, "'", ">", "/", "=",
+               the control characters, and any characters that are not
+               defined by Unicode.
+               https://github.com/angular/angular/issues/6786
+        -->
+        <!-- dynamisches Formular durch formGroup -->
+        <form [formGroup]="form" role="form">
+            <div class="form-group row has-warning mb-4" *ngIf="showWarning">
+                <div class="col col-12 form-control-feedback">
+                    <span class="alert alert-warning">
+                        <fa-icon
+                            [icon]="faExclamationTriangle"
+                            [size]="faExclamationTriangleSize"
+                        ></fa-icon>
+                        <strong class="text-help">
+                            Wenn Sie die Seite jetzt verlassen, verlieren Sie
+                            Ihre eingegebenen Daten.
+                        </strong>
+                    </span>
+                </div>
+            </div>
+
+            <hs-create-nachname [form]="form"></hs-create-nachname>
+            <hs-create-email [form]="form"></hs-create-email>
+            <hs-create-geschlecht [form]="form"></hs-create-geschlecht>
+            <hs-create-familienstand [form]="form"></hs-create-familienstand>
+            <hs-create-umsatz [form]="form"></hs-create-umsatz>
+            <hs-create-geburtsdatum [form]="form"></hs-create-geburtsdatum>
+            <hs-create-newsletter [form]="form"></hs-create-newsletter>
+            <hs-create-interessen [form]="form"></hs-create-interessen>
+
+            <div class="form-group row">
+                <div class="col offset-2">
+                    <!--
+                        Template-Syntax:
+                           (click)="onSave()" fuer Output = Event Binding
+                                              d.h. Ereignis click an onSave() anbinden
+                                              oder on-click="onSave"
+                           [disabled]="..." fuer Input = Property Binding
+                    -->
+                    <button
+                        class="btn btn-primary"
+                        (click)="onSave()"
+                        [disabled]="!form.valid"
+                    >
+                        <fa-icon [icon]="faCheck"></fa-icon>
+                        <span class="ml-1">Jetzt anlegen</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <small>* sind Pflichtfelder</small>
+    </div>
+</div>
+
+<div class="mt-3">
+    <hs-error-message [text]="errorMsg"></hs-error-message>
+</div>

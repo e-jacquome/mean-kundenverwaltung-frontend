@@ -1,0 +1,14 @@
+{
+    "_id": "00000000-0000-0000-0000-000000000003",
+    "nachname": "?!",
+    "rating": 5,
+    "geschlecht": "W",
+    "familienstand": "Ledig",
+    "umsatz": 9999,
+    "rabatt": 99,
+    "newsletter": true,
+    "geburtsdatum": "2017-02-01T00:00:00.000Z",
+    "isbn": "isbn-falsch",
+    "homepage": "anyHomepage",
+    "interessen": ["SPORT"]
+}

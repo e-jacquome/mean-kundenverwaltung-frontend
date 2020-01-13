@@ -1,0 +1,15 @@
+<div class="form-group row">
+    <label for="newsletterInput" class="col col-2 form-control-label">
+        Newsletter?
+    </label>
+
+    <div class="col col-10" [formGroup]="form">
+        <div class="checkbox">
+            <input
+                id="newsletterInput"
+                type="checkbox"
+                formControlName="newsletter"
+            />
+        </div>
+    </div>
+</div>
