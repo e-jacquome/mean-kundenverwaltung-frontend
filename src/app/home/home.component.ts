@@ -12,7 +12,8 @@ import { faChild } from '@fortawesome/free-solid-svg-icons';
                         Herzlich Willkommen in der JBGB-Kundenverwaltung!
                     </h2>
                     <h3>
-                        Sie können gerne in unserer Datenbank nach Kundendaten suchen.
+                        Sie können gerne in unserer Datenbank nach Kundendaten
+                        suchen.
                     </h3>
                 </span>
             </div>

@@ -7,7 +7,8 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
         <div>
             <fa-icon [icon]="faSpinner"></fa-icon>
             <span class="ml-1">
-               Ihre Webinhalte werden geladen, bitte haben Sie einen Moment Gedult. . .
+                Ihre Webinhalte werden geladen, bitte haben Sie einen Moment
+                Gedult. . .
             </span>
         </div>
     `,
