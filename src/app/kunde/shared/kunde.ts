@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 
+// eslint-disable-next-line max-classes-per-file
 export enum Familienstand {
     L = 'LEDIG',
     VH = 'VERHEIRATET',
@@ -10,6 +11,13 @@ export enum Familienstand {
 export enum KundeGeschlecht {
     W = 'W',
     M = 'M',
+}
+
+export class Adresse {
+    public constructor(public plz: string, public ort: string) {
+        this.plz = plz;
+        this.ort = ort;
+    }
 }
 
 /**
@@ -24,11 +32,11 @@ export interface KundeShared {
     newsletter?: boolean;
     geburtsdatum?: string;
     umsatz: number;
-    homepage: string;
+    homepage?: string;
     geschlecht: KundeGeschlecht;
     familienstand?: Familienstand | '';
     interessen?: Array<string>;
-    adresse: string;
+    adresse?: Adresse;
     version?: number;
 }
 
@@ -93,13 +101,14 @@ export class Kunde {
         public geschlecht: KundeGeschlecht,
         public familienstand: Familienstand | undefined | '',
         interessen: Array<string> | undefined,
-        public adresse: string | undefined,
+        public adresse: Adresse | undefined,
         public version: number | undefined,
     ) {
         // TODO Parsing, ob der Geburtsdatum-String valide ist
         this.geburtsdatum =
             geburtsdatum === undefined ? new Date() : new Date(geburtsdatum);
         this.interessen = interessen === undefined ? [] : interessen;
+        this.adresse = new Adresse('67069', 'Ludwigshafen');
         console.log('Kunde(): this=', this);
     }
 
