@@ -14,7 +14,7 @@ export enum KundeGeschlecht {
     D = 'D',
 }
 
-export enum Interess {
+export enum Interesse {
     SPORT = 'S',
     LESEN = 'L',
     REISEN = 'R',
@@ -39,7 +39,7 @@ export interface KundeShared {
     email: string;
     kategorie?: number;
     newsletter?: boolean;
-    geburtsdatum?: string;
+    geburtsdatum?: Date;
     umsatz: number;
     homepage?: string;
     geschlecht: KundeGeschlecht;
@@ -93,8 +93,7 @@ export interface KundeForm extends KundeShared {
 export class Kunde {
     private static readonly SPACE = 2;
 
-    geburtsdatum: Date | undefined;
-    interessen: Array<string>;
+    //interessen: Array<string>;
 
     // wird aufgerufen von fromServer() oder von fromForm()
     // eslint-disable-next-line max-params
@@ -104,12 +103,12 @@ export class Kunde {
         public email: string,
         public kategorie: number | undefined,
         public newsletter: boolean | undefined,
-        public geburtsdatum: string | undefined,
+        public geburtsdatum: Date | undefined,
         public umsatz: number,
         public homepage: string | undefined,
         public geschlecht: KundeGeschlecht,
         public familienstand: Familienstand | undefined | '',
-        interessen: Array<string> | undefined,
+        public interessen: Array<string> | undefined,
         public adresse: Adresse | undefined,
         public version: number | undefined,
     ) {
@@ -175,13 +174,13 @@ export class Kunde {
         console.log('Kunde.fromForm(): kundeForm=', kundeForm);
         const interessen: Array<string> = [];
         if (kundeForm.sport === true) {
-            interessen.push('SPORT');
+            interessen.push('S');
         }
         if (kundeForm.lesen === true) {
-            interessen.push('LESEN');
+            interessen.push('L');
         }
         if (kundeForm.lesen === true) {
-            interessen.push('REISEN');
+            interessen.push('');
         }
 
         const kunde = new Kunde(
@@ -298,13 +297,13 @@ export class Kunde {
     updateInteressen(sport: boolean, lesen: boolean, reisen: boolean) {
         this.resetInteressen();
         if (sport) {
-            this.addInteresse('SPORT');
+            this.addInteresse('S');
         }
         if (lesen) {
-            this.addInteresse('LESEN');
+            this.addInteresse('L');
         }
         if (reisen) {
-            this.addInteresse('REISEN');
+            this.addInteresse('R');
         }
     }
 
