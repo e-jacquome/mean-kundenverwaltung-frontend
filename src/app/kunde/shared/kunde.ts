@@ -324,7 +324,7 @@ export class Kunde {
             email: this.email,
             kategorie: this.kategorie,
             newsletter: this.newsletter,
-            geburtsdatum,
+            geburtsdatum: this.geburtsdatum,
             umsatz: this.umsatz,
             homepage: this.homepage,
             geschlecht: this.geschlecht,
