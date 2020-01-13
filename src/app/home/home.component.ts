@@ -17,15 +17,6 @@ import { faChild } from '@fortawesome/free-solid-svg-icons';
                 </span>
             </div>
         </div>
-        <div class="row d-flex justify-content-center align-self-center">
-            <div class="col-md-6 offset-md-1">
-                <fa-icon
-                    class="offset-md-4"
-                    [icon]="faChild"
-                    size="8x"
-                ></fa-icon>
-            </div>
-        </div>
         <router-outlet></router-outlet>
     `,
 })

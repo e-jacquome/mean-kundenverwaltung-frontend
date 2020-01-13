@@ -22,8 +22,8 @@
     role="form"
     *ngIf="notLoggedIn; else: loggedIn"
 >
-    <label for="usernameInput" class="form-control-label">
-        <small>Benutzername</small>
+    <label for="usernameInput" class="form-control-label text-white">
+        <medium>Benutzername</medium>
     </label>
     <input
         id="usernameInput"
@@ -35,8 +35,8 @@
         [(ngModel)]="username"
         name="username"
     />
-    <label for="passwordInput" class="form-control-label ml-3">
-        <small>Passwort</small>
+    <label for="passwordInput" class="form-control-label text-white ml-3">
+        <medium>Passwort</medium>
     </label>
     <input
         id="passwordInput"
@@ -48,7 +48,7 @@
         [(ngModel)]="password"
         name="password"
     />
-    <button class="btn btn-dark btn-sm ml-3" tabindex="3">Login</button>
+    <button class="btn btn-dark btn-md ml-3" tabindex="3">Login</button>
 </form>
 
 <ng-template #loggedIn>
