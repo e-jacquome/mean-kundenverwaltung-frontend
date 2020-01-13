@@ -521,13 +521,13 @@ export class KundeService {
             httpParams = httpParams.set('email', email);
         }
         if (sport === true) {
-            httpParams = httpParams.set('sport', 'true');
+            httpParams = httpParams.set('interessen', 'S');
         }
         if (lesen === true) {
-            httpParams = httpParams.set('lesen', 'true');
+            httpParams = httpParams.set('interessen', 'L');
         }
         if (reisen === true) {
-            httpParams = httpParams.set('reisen', 'true');
+            httpParams = httpParams.set('interessen', 'R');
         }
         return httpParams;
     }
