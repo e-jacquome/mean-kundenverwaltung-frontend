@@ -11,7 +11,7 @@ export class DetailsInteressenComponent implements OnInit {
     // <hs-interessen [values]="kunde.interessen">
     // Decorator fuer ein Attribut. Siehe InputMetadata
     @Input()
-    readonly values!: Array<string>;
+    readonly values!: Array<string> | undefined;
 
     ngOnInit() {
         console.log('DetailsInteressenComponent.values=', this.values);
