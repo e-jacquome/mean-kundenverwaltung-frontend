@@ -43,11 +43,11 @@ export class UpdateInteressenComponent implements OnInit, OnDestroy {
         console.log('kunde=', this.kunde);
 
         // Definition und Vorbelegung der Eingabedaten (hier: Checkbox)
-        const hasSport = this.kunde.hasInteresse('SPORT');
+        const hasSport = this.kunde.hasInteresse('Sport');
         this.sport = new FormControl(hasSport);
-        const hasLesen = this.kunde.hasInteresse('LESEN');
+        const hasLesen = this.kunde.hasInteresse('Lesen');
         this.lesen = new FormControl(hasLesen);
-        const hasReisen = this.kunde.hasInteresse('REISEN');
+        const hasReisen = this.kunde.hasInteresse('Reisen');
         this.reisen = new FormControl(hasReisen);
 
         this.form = new FormGroup({
