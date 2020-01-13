@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
             <img
                 src="/assets/img/kunden-icon.png"
                 alt="Logo"
-                height="80"
-                width="100"
+                height="72"
+                width="400"
             />
         </a>
     `,
