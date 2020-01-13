@@ -6,6 +6,7 @@ export const HOME_PATH = 'home';
 // siehe proxy.conf.json und angular.json
 const SCHEME = 'https';
 const PORT = 443;
+//const PORT = 8444;
 const SERVERNAME = 'localhost';
 const BASE_PATH = '';
 
@@ -24,3 +25,4 @@ export const BASE_URI = `${SCHEME}://${SERVERNAME}:${PORT}${BASE_PATH}`;
  * Pfad beim REST-Server fuer kunden
  */
 export const KUNDEN_PATH_REST = 'rest';
+//export const KUNDEN_PATH_REST = '';

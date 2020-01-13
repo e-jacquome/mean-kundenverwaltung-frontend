@@ -58,13 +58,14 @@ const options = {
         }),
     ],
     cors: true,
-    // proxy: 'http://localhost:8444',
-    // serveStatic: [
-    //     {
-    //         route: ['/', '.', '/assets', '/js'],
-    //         dir: dist,
-    //     },
-    // ],
+    //TODO: AUskommentieren
+    proxy: 'http://localhost:8444',
+    serveStatic: [
+        {
+            route: ['/', '.', '/assets', '/js'],
+            dir: dist,
+        },
+    ],
     logConnections: false,
     online,
     ui: false,
