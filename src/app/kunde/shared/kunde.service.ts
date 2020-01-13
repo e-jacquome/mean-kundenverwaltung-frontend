@@ -211,8 +211,7 @@ export class KundeService {
         errorFn: (status: number, errors: { [s: string]: any }) => void,
     ) {
         console.log('KundeService.save(): kunde=', kunde);
-        kunde.geburtsdatum = new Date();
-        //kunde.adresse = new Adresse("67069", "Ludwigshafen");
+        //kunde.geburtsdatum = new Date();
 
         const errorFnPost = (err: HttpErrorResponse) => {
             if (err.error instanceof Error) {
