@@ -1,7 +1,7 @@
 {
     "/rest": {
         "target": "https://localhost:8444",
-        "secure": true,
+        "secure": false,
         "pathRewrite": {
             "^/rest": ""
         }
