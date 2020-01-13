@@ -11,10 +11,19 @@ export enum Familienstand {
 export enum KundeGeschlecht {
     W = 'W',
     M = 'M',
+    D = 'D',
+}
+
+export enum Interess {
+    SPORT = 'S',
+    LESEN = 'L',
+    REISEN = 'R',
 }
 
 export class Adresse {
-    public constructor(public plz: string, public ort: string) {
+    plz?: string;
+    ort?: string;
+    constructor(plz: string, ort: string) {
         this.plz = plz;
         this.ort = ort;
     }
@@ -28,7 +37,7 @@ export interface KundeShared {
     _id?: string;
     nachname: string;
     email: string;
-    kategorie: number;
+    kategorie?: number;
     newsletter?: boolean;
     geburtsdatum?: string;
     umsatz: number;
@@ -95,7 +104,7 @@ export class Kunde {
         public email: string,
         public kategorie: number | undefined,
         public newsletter: boolean | undefined,
-        geburtsdatum: string | undefined,
+        public geburtsdatum: string | undefined,
         public umsatz: number,
         public homepage: string | undefined,
         public geschlecht: KundeGeschlecht,
