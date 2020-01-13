@@ -9,7 +9,7 @@ import { faChild } from '@fortawesome/free-solid-svg-icons';
             <div class="col-md-5">
                 <span>
                     <h2>
-                        Herzlich Willkommen in der JBGB-Kundenverwaltung!
+                        Herzlich Willkommen im Customer-Relationship-Management-System von JBGB.
                     </h2>
                     <h3>
                         Sie können gerne in unserer Datenbank nach Kundendaten
