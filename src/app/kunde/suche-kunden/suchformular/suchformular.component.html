@@ -15,7 +15,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <div class="card" [@fadeIn]="'in'">
-    <div class="card-header bg-primary">
+    <div class="card-header bg-dark">
         <fa-icon [icon]="faSearch"></fa-icon>
         <span class="ml-1 font-weight-bold"> Eingabe der Suchkriterien </span>
     </div>
@@ -28,7 +28,7 @@
                 lg:  992 - 1199px ("large")
                 xl: 1200 px       ("extra large")
             CSS-Klassen von Bootstrap:
-                card-..., form-..., row, btn, bg-primary, ...
+                card-..., form-..., row, btn, bg-info, ...
                 https://getbootstrap.com/docs/4.0/components/forms
         -->
 
@@ -70,7 +70,7 @@
             <div class="form-group row">
                 <div class="col offset-2">
                     <!-- default: type="submit" -->
-                    <button class="btn btn-primary">
+                    <button class="btn btn-dark">
                         <fa-icon [icon]="faSearch"></fa-icon>
                         <span class="ml-1">Suchen</span>
                     </button>

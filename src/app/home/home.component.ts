@@ -9,8 +9,11 @@ import { faChild } from '@fortawesome/free-solid-svg-icons';
             <div class="col-md-5">
                 <span>
                     <h2>
-                        Willkommen in der Kundenverwaltung!
+                        Herzlich Willkommen in der JBGB-Kundenverwaltung!
                     </h2>
+                    <h3>
+                        Sie können gerne in unserer Datenbank nach Kundendaten suchen.
+                    </h3>
                 </span>
             </div>
         </div>
