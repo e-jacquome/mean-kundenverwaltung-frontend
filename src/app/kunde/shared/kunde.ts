@@ -29,24 +29,48 @@ export class Adresse {
     }
 }
 
+export class Umsatz {
+    betrag?: number;
+    waehrung?: string;
+    constructor(betrag: number, waehrung: string) {
+        this.betrag = betrag;
+        this.waehrung = waehrung;
+    }
+}
+export class User {
+    username?: string;
+    password?: string;
+    constructor(username: string, password: string) {
+        this.username = username;
+        this.password = password;
+    }
+}
+
 /**
  * Gemeinsame Datenfelder unabh&auml;ngig, ob die Kundedaten von einem Server
  * (z.B. RESTful Web Service) oder von einem Formular kommen.
  */
 export interface KundeShared {
-    _id?: string;
-    nachname: string;
-    email: string;
-    kategorie?: number;
-    newsletter?: boolean;
-    geburtsdatum?: Date;
-    umsatz: number;
-    homepage?: string;
-    geschlecht: KundeGeschlecht;
-    familienstand?: Familienstand | '';
-    interessen?: Array<string>;
-    adresse?: Adresse;
-    version?: number;
+    _id?: string | undefined;
+    nachname?: string | undefined;
+    email?: string | undefined;
+    user?: User | undefined;
+    username?: string | undefined;
+    password?: string | undefined;
+    adresse?: Adresse | undefined;
+    ort?: string | undefined;
+    plz?: string | undefined;
+    kategorie?: number | undefined;
+    newsletter?: boolean | undefined;
+    geburtsdatum?: Date | undefined;
+    umsatz?: Umsatz | undefined;
+    betrag?: number | undefined;
+    waehrung?: string | undefined;
+    homepage?: string | undefined;
+    geschlecht?: KundeGeschlecht | undefined;
+    familienstand?: Familienstand | undefined | '';
+    interessen?: Array<string> | undefined;
+    version?: number | undefined;
 }
 
 interface Link {
@@ -100,23 +124,33 @@ export class Kunde {
     private constructor(
         public _id: string | undefined,
         public nachname: string,
-        public email: string,
+        public email: string | undefined,
+        public username: string | undefined,
+        public password: string | undefined,
+        public ort: string | undefined,
+        public plz: string | undefined,
         public kategorie: number | undefined,
         public newsletter: boolean | undefined,
         public geburtsdatum: Date | undefined,
-        public umsatz: number,
+        public betrag: number | undefined,
+        public waehrung: string | undefined,
         public homepage: string | undefined,
-        public geschlecht: KundeGeschlecht,
+        public geschlecht: KundeGeschlecht | undefined,
         public familienstand: Familienstand | undefined | '',
         public interessen: Array<string> | undefined,
-        public adresse: Adresse | undefined,
         public version: number | undefined,
     ) {
         // TODO Parsing, ob der Geburtsdatum-String valide ist
         this.geburtsdatum =
             geburtsdatum === undefined ? new Date() : new Date(geburtsdatum);
         this.interessen = interessen === undefined ? [] : interessen;
-        this.adresse = new Adresse('67069', 'Ludwigshafen');
+        this.plz = '67069';
+        this.ort = 'Ludwigshafen';
+        this.username = 'test';
+        this.password = 'p';
+        this.waehrung = 'EUR';
+        this.betrag = 9;
+
         console.log('Kunde(): this=', this);
     }
 
@@ -150,15 +184,19 @@ export class Kunde {
             id,
             kundeServer.nachname,
             kundeServer.email,
+            kundeServer.username,
+            kundeServer.password,
+            kundeServer.plz,
+            kundeServer.ort,
             kundeServer.kategorie,
             kundeServer.newsletter,
             kundeServer.geburtsdatum,
-            kundeServer.umsatz,
+            kundeServer.betrag,
+            kundeServer.waehrung,
             kundeServer.homepage,
             kundeServer.geschlecht,
             kundeServer.familienstand,
             kundeServer.interessen,
-            kundeServer.adresse,
             version,
         );
         console.log('Kunde.fromServer(): kunde=', kunde);
@@ -179,23 +217,29 @@ export class Kunde {
         if (kundeForm.lesen === true) {
             interessen.push('L');
         }
-        if (kundeForm.lesen === true) {
-            interessen.push('');
+        if (kundeForm.reisen === true) {
+            interessen.push('R');
         }
+
+        const waehrungEUR = 'EUR';
 
         const kunde = new Kunde(
             kundeForm._id,
             kundeForm.nachname,
             kundeForm.email,
+            kundeForm.username,
+            kundeForm.password,
+            kundeForm.ort,
+            kundeForm.plz,
             kundeForm.kategorie,
             kundeForm.newsletter,
             kundeForm.geburtsdatum,
-            kundeForm.umsatz,
+            kundeForm.betrag,
+            waehrungEUR,
             kundeForm.homepage,
             kundeForm.geschlecht,
             kundeForm.familienstand,
             interessen,
-            kundeForm.adresse,
             kundeForm.version,
         );
         console.log('Kunde.fromForm(): kunde=', kunde);
@@ -249,12 +293,17 @@ export class Kunde {
      */
     // eslint-disable-next-line max-params
     updateStammdaten(
-        nachname: string,
-        geschlecht: KundeGeschlecht,
+        nachname: string | undefined,
+        geschlecht: KundeGeschlecht | undefined,
         familienstand: Familienstand | undefined | '',
         kategorie: number | undefined,
         geburtsdatum: Date | undefined,
-        umsatz: number,
+        betrag: number | undefined,
+        waehrung: string | undefined,
+        plz: string | undefined,
+        ort: string | undefined,
+        username: string | undefined,
+        password: string | undefined,
     ) {
         this.nachname = nachname;
         this.geschlecht = geschlecht;
@@ -262,7 +311,12 @@ export class Kunde {
         this.geburtsdatum =
             geburtsdatum === undefined ? new Date() : geburtsdatum;
         this.kategorie = kategorie;
-        this.umsatz = umsatz;
+        this.betrag = 9;
+        this.waehrung = 'EUR';
+        this.plz = '67069';
+        this.ort = 'Ludwigshafen';
+        this.username = 'test';
+        this.password = 'p';
     }
 
     /**
@@ -325,12 +379,22 @@ export class Kunde {
             kategorie: this.kategorie,
             newsletter: this.newsletter,
             geburtsdatum: this.geburtsdatum,
-            umsatz: this.umsatz,
+            umsatz: {
+                betrag: this.betrag,
+                waehrung: this.waehrung,
+            },
             homepage: this.homepage,
             geschlecht: this.geschlecht,
             familienstand: this.familienstand,
             interessen: this.interessen,
-            adresse: this.adresse,
+            adresse: {
+                plz: this.plz,
+                ort: this.ort,
+            },
+            user: {
+                username: this.username,
+                password: this.password,
+            },
         };
     }
 

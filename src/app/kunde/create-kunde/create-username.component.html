@@ -1,0 +1,29 @@
+<div class="form-group row">
+    <label for="usernameInput" class="col col-2 form-control-label">
+        Username *
+    </label>
+    <div class="col col-10" [formGroup]="form">
+        <input
+            id="usernameInput"
+            placeholder="Username"
+            class="form-control"
+            autofocus
+            formControlName="username"
+            [class.border-danger]="username.invalid && username.touched"
+        />
+
+        <div *ngIf="username.invalid && username.touched" class="alert alert-danger">
+            <fa-icon [icon]="faExclamationCircle"></fa-icon>
+            <span class="ml-1" *ngIf="username.errors && username.errors.required">
+                Ein Username muss eingegeben werden.
+            </span>
+            <span class="ml-1" *ngIf="username.errors && username.errors.minlength">
+                Ein Username muss mindestens 2 Zeichen lang sein.
+            </span>
+            <span class="ml-1" *ngIf="username.errors && username.errors.pattern">
+                Ein Username muss mit einem Kundestaben oder einer Ziffer
+                beginnen.
+            </span>
+        </div>
+    </div>
+</div>
